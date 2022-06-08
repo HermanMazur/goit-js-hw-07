@@ -1,30 +1,28 @@
 import { galleryItems } from "./gallery-items.js";
 // Change code below this line
 
+const listGalleryItems = document.querySelector(".gallery");
+const markup = createGalleryMarkup(galleryItems);
 
-const listGalleryItems = document.querySelector('.gallery');
+listGalleryItems.insertAdjacentHTML("afterbegin", markup);
+listGalleryItems / addEventListener('click', onGalleryItemsClick);
 
-const markup = createGalleyItems(galleryItems);
-
-listGalleryItems.insertAdjacentHTML('afterbegin', markup);
-
-
-function createGalleyItems(galleryItems) {
-    return galleryItems.map(({ preview, original, description }) => {
-        `
-<div class="gallery__item">
-    <a class="gallery__link" href="${original}">
+function createGalleryMarkup(galleryItems) {
+	return galleryItems
+		.map(({ preview, original, description }) => {
+			return `
+        <div class="gallery__item">
+<a class="gallery__link" href="${original}">
     <img
     class="gallery__image"
     src="${preview}"
     data-source="${original}"
     alt="${description}"
     />
-    </a>
+</a>
 </div>
-    `;
-    })
-        .join("");
-
+`;
+		})
+		.join("");
 }
 
